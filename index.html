@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 Not Found | 頁面施工中</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Source+Code+Pro&display=swap" rel="stylesheet">
+    <style>
+        /* --- 全局樣式 --- */
+        :root {
+            --bg-color: #0d0d0d;
+            --text-color: #e0e0e0;
+            --glitch-color-1: #00ffff;
+            --glitch-color-2: #ff00ff;
+            --glow-color: #00aaff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Source Code Pro', monospace;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* --- 故障風格 404 標題 --- */
+        .glitch {
+            position: relative;
+            font-size: clamp(6rem, 25vw, 12rem); /* 自適應字體大小 */
+            font-weight: 700;
+            font-family: 'Orbitron', sans-serif;
+            line-height: 1;
+            animation: glitch-main 4s infinite linear;
+        }
+
+        .glitch::before,
+        .glitch::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--bg-color);
+            overflow: hidden;
+        }
+
+        .glitch::before {
+            left: -2px;
+            text-shadow: -2px 0 var(--glitch-color-1);
+            animation: glitch-anim-1 2s infinite linear alternate-reverse;
+        }
+
+        .glitch::after {
+            left: 2px;
+            text-shadow: -2px 0 var(--glitch-color-2);
+            animation: glitch-anim-2 3s infinite linear alternate-reverse;
+        }
+
+        @keyframes glitch-main {
+            0% { transform: skewX(0deg); }
+            5% { transform: skewX(2deg); }
+            10% { transform: skewX(0deg); }
+            50% { transform: skewX(0deg); }
+            55% { transform: skewX(-3deg); }
+            60% { transform: skewX(0deg); }
+            95% { transform: skewX(0deg); }
+            98% { transform: skewX(5deg); }
+            100% { transform: skewX(0deg); }
+        }
+
+        @keyframes glitch-anim-1 {
+            0% { clip-path: inset(10% 0 80% 0); }
+            20% { clip-path: inset(50% 0 10% 0); }
+            40% { clip-path: inset(90% 0 5% 0); }
+            60% { clip-path: inset(25% 0 60% 0); }
+            80% { clip-path: inset(5% 0 92% 0); }
+            100% { clip-path: inset(70% 0 20% 0); }
+        }
+
+        @keyframes glitch-anim-2 {
+            0% { clip-path: inset(85% 0 5% 0); }
+            25% { clip-path: inset(10% 0 70% 0); }
+            50% { clip-path: inset(60% 0 30% 0); }
+            75% { clip-path: inset(30% 0 50% 0); }
+            100% { clip-path: inset(90% 0 2% 0); }
+        }
+
+
+        /* --- 打字機效果訊息 --- */
+        .message {
+            margin-top: 2rem;
+            font-size: clamp(1rem, 4vw, 1.5rem);
+            letter-spacing: 2px;
+            
+            /* 打字動畫 */
+            width: 11.5em; /* 字符數 (11) + 0.5 */
+            overflow: hidden;
+            white-space: nowrap;
+            border-right: 2px solid var(--text-color);
+            animation: typing 3s steps(11, end), blink-caret 0.75s step-end infinite;
+            animation-fill-mode: forwards;
+        }
+
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 11.5em; } /* 確保寬度與字符數匹配 */
+        }
+
+        @keyframes blink-caret {
+            from, to { border-color: transparent; }
+            50% { border-color: var(--text-color); }
+        }
+        
+        /* --- 發光按鈕 --- */
+        .button {
+            margin-top: 3rem;
+            padding: 12px 28px;
+            border: 2px solid var(--glow-color);
+            border-radius: 5px;
+            color: var(--glow-color);
+            background-color: transparent;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 5px var(--glow-color), inset 0 0 5px var(--glow-color);
+        }
+
+        .button:hover {
+            color: var(--bg-color);
+            background-color: var(--glow-color);
+            box-shadow: 0 0 25px var(--glow-color), inset 0 0 10px var(--glow-color);
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="glitch" data-text="404">404</div>
+        <p class="message">网站正在建设当中...</p>
+        <a href="https://MaxCaulfield.CN" class="button">前往主站</a>
+    </div>
+
+</body>
+</html>
